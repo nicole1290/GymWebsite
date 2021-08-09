@@ -2,7 +2,7 @@
 
 //Routing for the defauly Page
 Route::set("index.php",function(){
-    registerclient::CreateView("registerclient");
+    
 });
 
 //set(nameintheurl)
@@ -11,6 +11,6 @@ Route::set('newMember',function(){
     Controller::CreateView('newMember');
 });
 
-Route::set('MemberController',function(){
+Route::set('registerNewMember',function(){
     Controller::openController('Member');
 });

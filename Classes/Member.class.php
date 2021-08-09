@@ -10,30 +10,11 @@ class Member extends Account{
 
     }
 
-    //Nicole start
-    public static function isAdmin($AccountID){
-        $pdo = DataBase::getConnection();
-        $statement="SELECT * FROM `admin` WHERE `account_id` = ?";
-        $parameters = [$AccountID];
-
-        $results = $pdo->query($statement,$parameters);
-        //returns number of rows found
-        $row=$pdo->rowCount();
-        if($row==1)
-            return true;            
-        return false;    
-    }
-    //Nicole End
-
     public static function isAlreadyMember($email){
         $pdo = DataBase::getConnection();
         $statement = "SELECT * FROM `account` WHERE `email` = ?";
-        $parameters = [$AccountID];
-        $results = $pdo->query($statement,$parameters);
-        $row=$pdo->rowCount();
-        if($row==1)
-            return true;            
-        return false;    
+        $parameters = [$email];
+        return $pdo->hasValidResults($statement,$parameters);
     }
 
     public function registerMemberInformation($accountID){
@@ -48,14 +29,8 @@ class Member extends Account{
 
     }
     
-
     public function getType(){
         return "member";
     }
 
 }
-
-$member = new Member();
-echo 'test';
-// $result = Member::isAdmin(2);
-// echo $result;

@@ -3,7 +3,7 @@
 class DataBase{
     
     private static $host = "localhost";
-    private static $dbName = "powerlab";
+    private static $dbName = "gymdb";
     private static $userName = "root";
     private static $password = "";
 
@@ -63,7 +63,7 @@ class DataBase{
     //Returns an integer that represents the number of rows affected by a query of type "DELETE".
     //Returns a boolean result that show the success/fail of a query if it is of type "UPDATE".
     public function query($query,$params = array()){
-    
+
             $queryType = explode(' ',$query);
 
             if($queryType[0] == "SELECT"){  
@@ -103,15 +103,16 @@ class DataBase{
     
     }
 
-    //Function that returns true if there at least 1 valid row for a given query of type "SELECT"
-    public function hasValidResults($query){
+    //Function that returns true if there is at least 1 valid row for a given query of type "SELECT"
+    public function hasValidResults($query,$params){
 
-        if(explode(' ',$query[0]=='SELECT') && count($this->query($query,[]))!=0)
+        if(explode(' ',$query[0]=='SELECT') && count($this->query($query,$params))!=0)
             return true;
         return false;
 
     }
 
+    
     public function countResult($query){
 
         $result = $this->pdo->query($query);

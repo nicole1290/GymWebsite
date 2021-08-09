@@ -136,18 +136,23 @@ abstract class Account {
     }
 
     //Check if a given mail is a valid mail for new registration or no
-    public function mailIsValid($email){
+    public static function mailIsValid($email){
 
         $pdo = DataBase::getConnection();
 
-        $statement = "SELECT * FROM  account WHERE email = ? ";
+        $statement = "SELECT * FROM  user WHERE Mail = ? ";
         $parameters = [$email];
-        $results = $pdo->query($statement,$parameters);
+        return !($pdo->hasValidResults($statement,$parameters));
+    }
 
-        foreach($results as $result){
-            return false;
-        }
-        return true;
+    //Check if the user account is admin or not
+    public static function isAdmin($AccountID){
+
+        $pdo = DataBase::getConnection();
+        $statement = "SELECT * FROM `administrator` WHERE `userID` = ? ";
+        $params = [$AccountID];
+        return $pdo->hasValidResults($statement,$params);
+
     }
 
     //Getters and Setters
@@ -199,8 +204,6 @@ abstract class Account {
     public function setMail($newMail){
         $this->mail = $newMail;
     }
-
-    public abstract function getType();
 
     public function getFullName(){
         return $this->firstname." ".$this->lastname;
