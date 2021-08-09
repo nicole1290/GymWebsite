@@ -1,8 +1,8 @@
 <?php
 
 class DataBase{
-
-    private static $host = "127.0.0.1";
+    
+    private static $host = "localhost";
     private static $dbName = "powerlab";
     private static $userName = "root";
     private static $password = "";
