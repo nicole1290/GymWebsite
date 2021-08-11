@@ -28,6 +28,11 @@ abstract class Controller extends DataBase{
     
     }
 
+    //Generating a unique token
+    public static function generateToken(){
+        return bin2hex(random_bytes(50)); 
+    }
+
     //Check if there is an admin account logged In currently
     // public static function accountAccessIsProhibited(){
 

@@ -1,6 +1,6 @@
 <?php
 
-class Member extends Account{
+class Members extends Account{
 
     public $yoe;
     public $diplomas;
@@ -15,18 +15,6 @@ class Member extends Account{
         $statement = "SELECT * FROM `account` WHERE `email` = ?";
         $parameters = [$email];
         return $pdo->hasValidResults($statement,$parameters);
-    }
-
-    public function registerMemberInformation($accountID){
-
-        $pdo = DataBase::getConnection();
-        $statement = "INSERT INTO `member`(`account_id`) VALUES (?)";
-        $parameters = [$accountID];
-
-        $result = $pdo->query($statement,$parameters);
-
-        return $result;
-
     }
     
     public function getType(){

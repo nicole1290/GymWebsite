@@ -3,80 +3,50 @@
 class Member extends Controller
 {
 
-    public static function registrationParametersAreSet()
-    {
+    public static function registrationParametersAreSet(){
 
-        if (
-            isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['gender'])
-            && isset($_POST['birthdate']) && isset($_POST['phone']) && isset($_POST['email'])
-            && isset($_POST['password']) && isset($_POST['address'])
-        ) {
-
+        if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['gender'])
+            && isset($_POST['birthdate']) && isset($_POST['phone']) && isset($_POST['email']))
             return true;
-        } else {
-
+        else
             return false;
-        }
     }
+    
 
-    public static function RegisterMember()
-    {
+    public static function RegisterMember(){
 
-        $account = new Member($_POST['firstname'], $_POST['lastname'], $_POST['gender'], $_POST['birthdate'], $_POST['phone'], $_POST['email']);
+        $token = Controller::generateToken();
+        
+        $account = new Members($_POST['firstname'], $_POST['lastname'], $_POST['gender'], $_POST['birthdate'], $_POST['phone'], $_POST['email']);
 
-        $newAccountId = $account->registerNewAccount($_POST['password']);
+        $newAccountId = $account->CreateNewAccount($token);
 
         if ($newAccountId != null) {
 
-            $account->registerMemberInformation($newAccountId);
+            setcookie('login',true,time() + (86400 * 30 * 3),"/");
+            setcookie('email',$_POST['email'],time() + (86400 * 30 * 3),"/");
 
-            Controller::redirect('adminDashboard');
+            //Send Confirmation mail
+            Mail::sendRegistrationMail($_POST['email'],$newAccountId);
+
+            //TODO:: Open the registration succeed alert and open the membership page
+
         } else {
-            Controller::redirect('ErrorPage');
+            
         }
     }
 
-    // public static function CreateView($viewName){
-
-    //     if(Controller::accountAccessIsProhibited()){
-
-    //         if($viewName == "newMember"){
-
-    //             //TODO: Add the admin restriction here to allow only admins to enter this part
-
-    //             Controller::CreateView('registerclient');
-
-    //         }else{
-
-    //             parent::CreateView($viewName);
-
-    //         }
-
-    //     }else{
-
-    //         Controller::redirect('index.php');
-
-    //     }
-
-    // }
 }
 
 if (isset($_POST['registerNewMember'])) {
 
     if (Account::isAdmin(1) && Member::registrationParametersAreSet()) {
 
-        $result = Account::mailIsValid($_POST['email']);
-
-        echo $result;
+        Member::RegisterMember();
+        
     } else { //Case where the user's access is not prohibited
 
-        //     Controller::redirect('javascript://history.go(-1)');
+        Controller::redirect('javascript://history.go(-1)');
 
     }
 }
-
-echo $_POST['email'];
-
-$result = Account::mailIsValid($_POST['email']);
-
-echo $result;

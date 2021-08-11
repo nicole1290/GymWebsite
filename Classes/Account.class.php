@@ -23,21 +23,18 @@ abstract class Account {
 
     }
 
-    public function registerNewAccount($password){
+    public function CreateNewAccount($token){
 
         $pdo = DataBase::getConnection();
-
-        $password = md5($password);
-        
+    
         if($this->mailIsValid($this->email)){
-            
+
             try{
             
-                $statement = "INSERT INTO account SET firstname = ? ,lastname = ? ,gender = ? ,type = ? ,birthdate = ? ,phone = ? , email= ? , password = ? ";
-                $parameters = [$this->firstname,$this->lastname,$this->gender,$this->type,$this->birthdate,$this->phoneNumber,$this->email,$password];
+                $statement = "INSERT INTO `user`(`First Name`, `Last Name`, `BirthDate`, `Gender`, `Mail`,`PhoneNumber`, `token`, `active`) VALUES (?,?,?,?,?,?,?,false)";
+                $parameters = [$this->firstname,$this->lastname,$this->birthdate,$this->gender,$this->email,$this->phoneNumber,$token];
                 $result = $pdo->query($statement,$parameters);
-                
-                //Code to be done Next
+
                 return $result;
 
             }catch(Exception $e){
@@ -49,11 +46,13 @@ abstract class Account {
     
         }else{
 
-            //Code to show Error of unvalid Mail
+            //TODO: Code to show Error of unvalid Mail
 
         }
 
     }
+
+    //TODO: Create the code that will activate the mail
 
     public static function loginUser($email,$password){
 
@@ -98,7 +97,7 @@ abstract class Account {
 
         $pdo = DataBase::getConnection();
 
-        $statement = "SELECT * FROM `account` WHERE email = ?";
+        $statement = "SELECT * FROM `user` WHERE Mail = ?";
 
         $results = $pdo->query($statement,[$email]);
 
@@ -107,16 +106,14 @@ abstract class Account {
         foreach($results as $result){
             
             $account['ID'] = $result['ID'];
-            $account['firstname'] = $result['firstname'];
-            $account['lastname'] = $result['lastname'];
-            $account['gender'] = $result['gender'];
-            $account['type'] = $result['type'];
-            $account['birthdate'] = $result['birthdate'];
-            $account['phoneNumber'] = $result['phone'];
-            $account['email'] = $result['email'];
+            $account['firstname'] = $result['First Name'];
+            $account['lastname'] = $result['Last Name'];
+            $account['gender'] = $result['Gender'];
+            $account['birthdate'] = $result['BirthDate'];
+            $account['phoneNumber'] = $result['PhoneNumber'];
+            $account['email'] = $result['Mail'];
 
             return $account;
-
         }
 
     }
