@@ -15,11 +15,11 @@ class Member extends Controller
 
     public static function RegisterMember(){
 
-        $token = Controller::generateToken();
+        $verificationToken = Controller::generateToken();
         
         $account = new Members($_POST['firstname'], $_POST['lastname'], $_POST['gender'], $_POST['birthdate'], $_POST['phone'], $_POST['email']);
 
-        $newAccountId = $account->CreateNewAccount($token);
+        $newAccountId = $account->CreateNewAccount($verificationToken);
 
         if ($newAccountId != null) {
 
@@ -27,13 +27,21 @@ class Member extends Controller
             setcookie('email',$_POST['email'],time() + (86400 * 30 * 3),"/");
 
             //Send Confirmation mail
-            Mail::sendRegistrationMail($_POST['email'],$newAccountId);
+            Mail::sendRegistrationMail($_POST['email'],$newAccountId,$verificationToken);
 
             //TODO:: Open the registration succeed alert and open the membership page
 
         } else {
             
         }
+    }
+
+    public static function confirmActivation(){
+
+        $mail = MailServer::getInstance();
+
+        $mail->verifyActivationCode($_GET['token'],$_GET['email']);
+
     }
 
 }
@@ -44,9 +52,16 @@ if (isset($_POST['registerNewMember'])) {
 
         Member::RegisterMember();
         
-    } else { //Case where the user's access is not prohibited
+    }else{//Case where the user's access is not prohibited
 
         Controller::redirect('javascript://history.go(-1)');
 
     }
+}
+
+if(isset($_GET['token'])&&!empty($_GET['token'])
+   &&isset($_GET['email'])&&!empty($_GET['email'])){
+
+    Member::confirmActivation();
+
 }

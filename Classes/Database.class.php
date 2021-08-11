@@ -27,7 +27,7 @@ class DataBase{
         }
         
         return self::$instance[$cls];
-    
+
     }
 
     public function closeConnection(){
@@ -39,6 +39,7 @@ class DataBase{
     private function connect(){
 
         try{
+        
             $pdo = new PDO("mysql:host=".self::$host.";dbname=".self::$dbName,self::$userName,self::$password);
         
             //For Error Handling
@@ -64,43 +65,41 @@ class DataBase{
     //Returns a boolean result that show the success/fail of a query if it is of type "UPDATE".
     public function query($query,$params = array()){
 
-            $queryType = explode(' ',$query);
+        $queryType = explode(' ',$query);
 
-            if($queryType[0] == "SELECT"){  
-                $statement = $this->pdo->prepare($query);
-                $statement->execute($params);
-                $data = $statement->fetchAll();
-                return $data;
+        if($queryType[0] == "SELECT"){  
+            $statement = $this->pdo->prepare($query);
+            $statement->execute($params);
+            $data = $statement->fetchAll();
+            return $data;
         
-            }elseif($queryType[0] == "INSERT"){
-           
-                $statement = $this->pdo->prepare($query);
-                $statement->execute($params);
-                return $this->pdo->lastInsertId();
+        }elseif($queryType[0] == "INSERT"){
+         
+            $statement = $this->pdo->prepare($query);
+            $statement->execute($params);
+            return $this->pdo->lastInsertId();
         
-            }elseif($queryType[0]=="DELETE"){
+        }elseif($queryType[0]=="DELETE"){
 
-                $statement = $this->pdo->prepare($query);
-                $statement->execute($params);
-                return $statement->rowCount();
+            $statement = $this->pdo->prepare($query);
+            $statement->execute($params);
+            return $statement->rowCount();
         
-            }elseif($queryType[0]=="UPDATE"){
+        }elseif($queryType[0]=="UPDATE"){
 
-                try{
+            try{
                     
-                    $statement = $this->pdo->prepare($query);
-                    $statement->execute($params);
-                    return $statement->rowCount() > 0;
+                $statement = $this->pdo->prepare($query);
+                $statement->execute($params);
+                return $statement->rowCount() > 0;
                 
-                }catch(Exception $e){
+            }catch(Exception $e){
 
-                    $e->getMessage();
+                $e->getMessage();
             
-                }
             }
-    
-        
-    
+        }
+       
     }
 
     //Function that returns true if there is at least 1 valid row for a given query of type "SELECT"

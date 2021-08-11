@@ -20,8 +20,7 @@ class MailServer
     private function __construct(){}
 
     //Get instance of the Class
-    public static function getInstance()
-    {
+    public static function getInstance(){
         if (self::$instance === null) {
             self::$instance = new self();
         }
@@ -69,4 +68,34 @@ class MailServer
 
     }
     
+    public function verifyActivationCode($verificationToken,$mail){
+
+        $pdo = DataBase::getConnection();
+
+        $statement = "SELECT * FROM `user` WHERE `Mail` = ? AND `token` = ? AND `active` = '0'";
+        $parameters = [$mail,$verificationToken];
+
+        if($pdo->hasValidResults($statement,$parameters)){
+
+            $statement = "UPDATE `user` SET `active`= true WHERE `Mail` = ?";
+            $parameters = [$mail];
+
+            $result = $pdo->query($statement,$parameters);
+
+            if($result){
+
+                echo 'Registration confirmed';
+                
+            }else{
+
+                die('Registration failed');
+
+            }
+
+        }else{
+            echo 'error';
+        }
+
+    }
+
 }

@@ -124,7 +124,6 @@ if(isset($_POST['updateAccount'])){
     if(Register::parametersSet()){
 
         if(Account::loginUser($_POST['email'],$_POST['password'])){
-
             
             if($_COOKIE['email'] != $_POST['email']){
 

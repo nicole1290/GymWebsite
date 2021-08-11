@@ -15,5 +15,13 @@ Route::set('registerNewMember',function(){
 });
 
 Route::set("sendMail",function(){
+
     Controller::CreateView('send_email_html');
+
+});
+
+Route::set('registerConfirmation',function(){
+
+    Controller::openController('Member');
+
 });
