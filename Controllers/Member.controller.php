@@ -40,12 +40,29 @@ class Member extends Controller
 
         $mail = MailServer::getInstance();
 
-        $mail->verifyActivationCode($_GET['token'],$_GET['email']);
+        $result = $mail->verifyActivationCode($_GET['token'],$_GET['email']);
+
+        if($result){
+
+            Controller::redirect('RegistrationNewPassword');
+
+        }else{
+            
+            Controller::redirect('ErrorPage');
+        
+        }
+
+    }
+
+    public static function setPassword(){
+
+        
 
     }
 
 }
 
+//Catch the request for new Member registration
 if (isset($_POST['registerNewMember'])) {
 
     if (Account::isAdmin(1) && Member::registrationParametersAreSet()) {
@@ -59,9 +76,17 @@ if (isset($_POST['registerNewMember'])) {
     }
 }
 
+//Catch the request for mail registration confirmation
 if(isset($_GET['token'])&&!empty($_GET['token'])
    &&isset($_GET['email'])&&!empty($_GET['email'])){
 
     Member::confirmActivation();
+
+}
+
+if(isset($_GET['password'])&&isset($_GET['passwordConfirmation'])
+    &&!empty($_GET['password'])&&!empty($_GET['passwordConfirmation'])){
+
+    Member::setPassword();
 
 }

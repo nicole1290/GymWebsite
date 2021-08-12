@@ -84,16 +84,18 @@ class MailServer
 
             if($result){
 
-                echo 'Registration confirmed';
+                return true;
                 
             }else{
 
-                die('Registration failed');
+                return false;
 
             }
 
         }else{
+
             echo 'error';
+
         }
 
     }

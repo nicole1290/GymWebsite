@@ -25,3 +25,15 @@ Route::set('registerConfirmation',function(){
     Controller::openController('Member');
 
 });
+
+Route::set('RegistrationNewPassword',function(){
+
+    Controller::CreateView('PasswordForm');
+
+});
+
+Route::set('PasswordSubmit',function(){
+
+    Controller::openController('Member');
+
+});
