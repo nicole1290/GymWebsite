@@ -93,13 +93,13 @@ abstract class Account {
         
     }
 
-    public static function retrieveAccount($email){
+    public static function retrieveAccount($AccountID){
 
         $pdo = DataBase::getConnection();
 
-        $statement = "SELECT * FROM `user` WHERE Mail = ?";
+        $statement = "SELECT * FROM `user` WHERE `ID` = ?";
 
-        $results = $pdo->query($statement,[$email]);
+        $results = $pdo->query($statement,[$AccountID]);
 
         $account = array();
 
@@ -176,7 +176,7 @@ abstract class Account {
         }
     }
 
-    //set the account that has a given mail to active
+    //Set the account that has a given mail to active
     public static function setActive($mail){
 
         $pdo = DataBase::getConnection();

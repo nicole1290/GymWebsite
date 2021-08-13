@@ -7,7 +7,7 @@ class Mail{
         $type = "registrationMail";
         $subject = "Registration Mail";
 
-        $account = Account::retrieveAccount($_COOKIE['email']);
+        $account = Account::retrieveAccount($AccountID);
 
         $data = array(
             "{SITE_ADDRESS}" => "localhost/gymWebsite",

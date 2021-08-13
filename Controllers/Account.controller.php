@@ -48,25 +48,25 @@ class Accounts extends Controller{
 
     }
 
-    public static function CreateView($viewName){
+    // public static function CreateView($viewName){
     
-        if($viewName == "account"){
+    //     if($viewName == "account"){
         
-            if(Accounts::isLoggedIn()){//Checks if there is an already logged In Account
+    //         if(Accounts::isLoggedIn()){//Checks if there is an already logged In Account
 
-                //Will Have to fetch The current Account's Information and then display It.
-                $accountData = Account::retrieveAccount($_COOKIE['email']);
+    //             //Will Have to fetch The current Account's Information and then display It.
+    //             $accountData = Account::retrieveAccount($_COOKIE['email']);
 
-                new AccountEditView($accountData);
+    //             new AccountEditView($accountData);
 
-            }else{
+    //         }else{
 
-                Controller::redirect('login');
+    //             Controller::redirect('login');
 
-            }
+    //         }
         
-        }
-    }
+    //     }
+    // }
 
     //Getters and Setters
     public function getFirstname(){

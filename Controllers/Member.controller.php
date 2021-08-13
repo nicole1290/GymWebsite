@@ -12,7 +12,6 @@ class Member extends Controller
             return false;
     }
     
-
     public static function RegisterMember(){
 
         $verificationToken = Controller::generateToken();
@@ -72,13 +71,15 @@ class Member extends Controller
                 echo $result;
 
             }else{
+            
                 die("Failed setting up the password");
+            
             }
 
         }else{
-
+            
             die("Wrong password");
-        
+            
         }
 
     }
