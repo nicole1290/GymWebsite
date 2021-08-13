@@ -41,3 +41,13 @@ Route::set('PasswordSubmit',function(){
     Controller::openController('Member');
 
 });
+
+Route::set('Login',function(){
+
+    Controller::CreateView('Login');
+
+});
+
+Route::set('LoginSubmit',function(){
+    Controller::openController('Account');
+});

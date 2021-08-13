@@ -52,9 +52,8 @@ abstract class Account {
 
     }
 
-    //TODO: Create the code that will activate the mail
-
-    public static function loginUser($email,$password){
+    //Function that returns a boolean value concerning if the login authentication succeeded or not
+    public static function loginAuthentication($email,$password){
 
         $pdo = DataBase::getConnection();
 
@@ -62,15 +61,10 @@ abstract class Account {
 
         try{
 
-            $statement = "SELECT  COUNT(`email`) FROM `account` WHERE `email`= ? AND `password` = ? ";
+            $statement = "SELECT  COUNT(`email`) FROM `user` WHERE `email`= ? AND `password` = ? ";
             $parameters = [$email,$password];
-            $results = $pdo->query($statement,$parameters);
 
-            foreach($results as $result){
-                return $result;
-            }
-
-            return false;
+            return $pdo->hasValidResults($statement,$parameters);
 
         }catch(Exception $e){
 
