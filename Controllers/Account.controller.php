@@ -40,6 +40,23 @@ class Accounts extends Controller{
         }
     }
 
+    //Function used to verify the login
+    public static function logIn(){
+
+        if(Account::loginAuthentication($_GET['mail'],$_GET['password'])){
+            setcookie('login',true,time() - 3600,"/");
+            setcookie('email',$_POST['email'],time() - 3600 ,"/");
+
+            //TODO: Add Redirection
+        }else{
+
+            //TODO: Add reply msg on UI that alerts authentication failure
+
+        }
+
+    }
+
+    //Function used to LogOut
     public static function logOut(){
 
         setcookie('login',true,time() - 3600,"/");

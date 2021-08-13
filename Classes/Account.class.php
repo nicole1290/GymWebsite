@@ -176,7 +176,7 @@ abstract class Account {
         $pdo = DataBase::getConnection();
 
         $statement = "UPDATE `user` SET `active` = true WHERE `Mail` = ?";
-        $parameters = [$mail];   
+        $parameters = [$mail];
 
         $result = $pdo->query($statement,$parameters);
 
