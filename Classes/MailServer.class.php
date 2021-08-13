@@ -17,10 +17,13 @@ class MailServer
     public static $instance;
 
     //private constructor
-    private function __construct(){}
+    private function __construct()
+    {
+    }
 
     //Get instance of the Class
-    public static function getInstance(){
+    public static function getInstance()
+    {
         if (self::$instance === null) {
             self::$instance = new self();
         }
@@ -28,15 +31,16 @@ class MailServer
     }
 
     //Send mail to the a given recepient
-    public function sendMail($type, $subject, $recepient, $data){
+    public function sendMail($type, $subject, $recepient, $data)
+    {
 
         $templates_path = "./assets/emailTemplate/";
-        $template_name = $templates_path . $type.'.php';
+        $template_name = $templates_path . $type . '.php';
 
         $mail_Address = "marounnawwar@gmail.com";
 
         $headers  =
-            'From: PowerLab <'.$mail_Address.'>' . "\r\n"
+            'From: PowerLab <' . $mail_Address . '>' . "\r\n"
             . 'MIME-Version: 1.0' . "\r\n"
             . 'Content-type: text/html; charset=ISO-8859-1' . "\r\n";
 
@@ -55,49 +59,32 @@ class MailServer
 
         //send mail to the targetted receiver
         if (mail($recepient, $subject, $message, $headers)) {
-           
+
             echo "Success";
             //TODO: redirect to Membership page
-        
+
         } else {
-         
+
             echo "Email sending failed";
             //TODO: Generate fail message
 
         }
-
     }
-    
-    public function verifyActivationCode($verificationToken,$mail){
+
+    public function verifyActivationCode($verificationToken, $mail)
+    {
 
         $pdo = DataBase::getConnection();
 
         $statement = "SELECT * FROM `user` WHERE `Mail` = ? AND `token` = ? AND `active` = '0'";
-        $parameters = [$mail,$verificationToken];
+        $parameters = [$mail, $verificationToken];
 
-        if($pdo->hasValidResults($statement,$parameters)){
+        if ($pdo->hasValidResults($statement, $parameters)) {
 
-            $statement = "UPDATE `user` SET `active`= true WHERE `Mail` = ?";
-            $parameters = [$mail];
+            return true;
+        } else {
 
-            $result = $pdo->query($statement,$parameters);
-
-            if($result){
-
-                return true;
-                
-            }else{
-
-                return false;
-
-            }
-
-        }else{
-
-            echo 'error';
-
+            return false;
         }
-
     }
-
 }

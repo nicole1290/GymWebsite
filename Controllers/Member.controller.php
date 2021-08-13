@@ -30,6 +30,7 @@ class Member extends Controller
             Mail::sendRegistrationMail($_POST['email'],$newAccountId,$verificationToken);
 
             //TODO:: Open the registration succeed alert and open the membership page
+            
 
         } else {
             
@@ -44,7 +45,7 @@ class Member extends Controller
 
         if($result){
 
-            Controller::redirect('RegistrationNewPassword');
+            Controller::redirect('RegistrationNewPassword',['mail' => $_GET['email']]);
 
         }else{
             
@@ -54,9 +55,31 @@ class Member extends Controller
 
     }
 
+    //This function intends on setting a new password for the users
     public static function setPassword(){
 
+        $accMail = $_POST['mail'];
+        $password = $_POST['password'];
+        $confPassword = $_POST['passwordConfirmation'];
+
+        //Check if the password and the confirmation password are the same
+        if($password === $confPassword){
+
+            if(Account::setPassword($password,$accMail)){
+                
+                $result = Account::setActive($accMail);
+
+                echo $result;
+
+            }else{
+                die("Failed setting up the password");
+            }
+
+        }else{
+
+            die("Wrong password");
         
+        }
 
     }
 
@@ -84,8 +107,10 @@ if(isset($_GET['token'])&&!empty($_GET['token'])
 
 }
 
-if(isset($_GET['password'])&&isset($_GET['passwordConfirmation'])
-    &&!empty($_GET['password'])&&!empty($_GET['passwordConfirmation'])){
+
+if(isset($_POST['password'])&&isset($_POST['passwordConfirmation'])
+    &&!empty($_POST['password'])&&!empty($_POST['passwordConfirmation'])
+    &&isset($_POST['mail'])&&!empty($_POST['mail'])){
 
     Member::setPassword();
 

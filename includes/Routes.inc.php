@@ -7,11 +7,15 @@ Route::set("index.php",function(){
 
 
 Route::set('newMember',function(){
+
     Controller::CreateView('newMember');
+
 });
 
 Route::set('registerNewMember',function(){
+
     Controller::openController('Member');
+
 });
 
 Route::set("sendMail",function(){

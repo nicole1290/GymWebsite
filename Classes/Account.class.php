@@ -152,6 +152,52 @@ abstract class Account {
 
     }
 
+    //Set the password and turn the account status to activated
+    public static function setPassword($password,$mail){
+
+        $pdo = DataBase::getConnection();
+
+        //Hashing the password to put it in the 
+        $password = md5($password);
+
+        $statement = "UPDATE `user` SET `password` = ? WHERE `Mail` = ?";
+        $parameters = [$password,$mail];   
+
+        $result = $pdo->query($statement,$parameters);
+
+        if($result){
+
+            return true;
+        
+        }else{
+        
+            return false;
+        
+        }
+    }
+
+    //set the account that has a given mail to active
+    public static function setActive($mail){
+
+        $pdo = DataBase::getConnection();
+
+        $statement = "UPDATE `user` SET `active` = true WHERE `Mail` = ?";
+        $parameters = [$mail];   
+
+        $result = $pdo->query($statement,$parameters);
+
+        if($result){
+
+            return true;
+        
+        }else{
+        
+            return false;
+        
+        }
+
+    }
+
     //Getters and Setters
 
     public function getFirstname(){
