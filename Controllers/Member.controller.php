@@ -22,9 +22,6 @@ class Member extends Controller
 
         if ($newAccountId != null) {
 
-            setcookie('login',true,time() + (86400 * 30 * 3),"/");
-            setcookie('email',$_POST['email'],time() + (86400 * 30 * 3),"/");
-
             //Send Confirmation mail
             Mail::sendRegistrationMail($_POST['email'],$newAccountId,$verificationToken);
 
@@ -67,6 +64,9 @@ class Member extends Controller
             if(Account::setPassword($password,$accMail)){
                 
                 $result = Account::setActive($accMail);
+
+                setcookie('login',true,time() + (86400 * 30 * 3),"/");
+                setcookie('email',$_POST['mail'],time() + (86400 * 30 * 3),"/");
 
                 echo $result;
 
