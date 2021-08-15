@@ -76,19 +76,21 @@ abstract class Account {
 
     }
 
-    public static function updateAccount($firstname,$lastname,$gender,$type,$birthdate,$phoneNumber,$password,$email){
+    //Function used to update an already existing account
+    public static function updateAccount($firstname,$lastname,$gender,$type,$birthdate,$phoneNumber,$email){
 
         $accMail = $_COOKIE['email'];
             
         $pdo = DataBase::getConnection();
  
-        $statement = "UPDATE `account` SET `firstname`=? ,`lastname`=? ,`gender`=? ,`type`=? ,`birthdate`=? ,`phone`=? ,`email`=? WHERE `email` = ?";
+        $statement = "UPDATE `user` SET `firstname`=? ,`lastname`=? ,`gender`=? ,`type`=? ,`birthdate`=? ,`phone`=? ,`Mail`=? WHERE `Mail` = ?";
         $parameters = [$firstname,$lastname,$gender,$type,$birthdate,$phoneNumber,$email,$accMail];
 
         $pdo->query($statement,$parameters);
         
     }
 
+    //Function used to retrieve an account's information given it's Account ID
     public static function retrieveAccount($AccountID){
 
         $pdo = DataBase::getConnection();
@@ -114,11 +116,12 @@ abstract class Account {
 
     }
 
+    //Function to retrieve the account type of a given user ID
     public static function retrieveAccountType($AccountID){
 
         $pdo = DataBase::getConnection();
 
-        $statement = "SELECT * FROM `account` WHERE ID = ?";
+        $statement = "SELECT * FROM `user` WHERE ID = ?";
 
         $results = $pdo->query($statement,[$AccountID]);
 
@@ -133,7 +136,7 @@ abstract class Account {
 
         $pdo = DataBase::getConnection();
 
-        $statement = "SELECT * FROM  user WHERE Mail = ? ";
+        $statement = "SELECT * FROM user WHERE Mail = ? ";
         $parameters = [$email];
         return !($pdo->hasValidResults($statement,$parameters));
     }
