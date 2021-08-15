@@ -44,13 +44,17 @@ class Accounts extends Controller{
     public static function logIn(){
 
         if(Account::loginAuthentication($_GET['mail'],$_GET['password'])){
+            
             setcookie('login',true,time() - 3600,"/");
-            setcookie('email',$_POST['email'],time() - 3600 ,"/");
+            setcookie('email',$_GET['mail'],time() - 3600 ,"/");
 
             //TODO: Add Redirection
+            Controller::redirect('index.php');
+
         }else{
 
             //TODO: Add reply msg on UI that alerts authentication failure
+            echo 'Login failed';
 
         }
 
@@ -134,4 +138,10 @@ class Accounts extends Controller{
         $this->email = $newMail;
     }
 
+}
+
+if(isset($_GET['mail'])&&isset($_GET['password'])){
+    
+    Accounts::logIn();
+        
 }

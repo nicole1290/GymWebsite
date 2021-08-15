@@ -23,6 +23,8 @@ abstract class Account {
 
     }
 
+    //Function used to create new Accounts 
+    //It takes as parameters the token that will be used for the account activation process
     public function CreateNewAccount($token){
 
         $pdo = DataBase::getConnection();
@@ -61,7 +63,7 @@ abstract class Account {
 
         try{
 
-            $statement = "SELECT  COUNT(`email`) FROM `user` WHERE `email`= ? AND `password` = ? ";
+            $statement = "SELECT  * FROM `user` WHERE `Mail`= ? AND `Password` = ? ";
             $parameters = [$email,$password];
 
             return $pdo->hasValidResults($statement,$parameters);
