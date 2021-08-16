@@ -1,0 +1,208 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
+  
+  body {
+    font-family: "Prompt",sans-serif;
+    color: #333;
+    font-size: 13px;
+    margin: 0; 
+  }
+  
+  a:visited{
+    color: black;
+  }
+  /* I added them  */
+  .far .fa-eye{
+    color: black;
+    font-size: 15px;
+  }
+  
+  .zmdi{
+    font-size: 17px;
+  }
+  .container i{
+     
+      cursor: pointer;
+  }
+  #message {
+    display:none;
+    background: #f1f1f1;
+    color: #000;
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
+  }
+  
+  #message p {
+    padding: 10px 35px;
+    font-size: 18px;
+  }
+  
+  /* Add a green text color and a checkmark when the requirements are right */
+  .valid {
+    color: green;
+  }
+  
+  .valid:before {
+    position: relative;
+    left: -35px;
+    content: "&#10004;";
+  }
+  
+  /* Add a red text color and an "x" icon when the requirements are wrong */
+  .invalid {
+    color: red;
+  }
+  
+  .invalid:before {
+    position: relative;
+    left: -35px;
+    content: "&#10006;";
+  }
+  
+  
+  /* End part of customization adding */
+  
+  .wrapper {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+   }
+  
+  
+  input, textarea, select, button {
+    font-family: "Prompt",sans-serif;
+    color: #333;
+    font-size: 13px; }
+  
+  p, h1, h3, h4, h5, h6, ul {
+    margin: 0; }
+  
+    h2{
+      margin-left: 35% !important;
+    }
+    h3{
+      text-align: center !important;
+      font-size: x-large;
+    }
+
+    form{
+      margin: 10%;
+     align-items: center;
+    }
+  img {
+    max-width: 100%; }
+  
+  ul {
+    padding-left: 0;
+    margin-bottom: 0; }
+  
+  a:hover {
+    text-decoration: none; }
+  
+  :focus {
+    outline: none; }
+ 
+  
+  .form-group {
+    display: flex; }
+    .form-group input {
+      width: 100%; }
+      .form-group input:first-child {
+        margin-right: 25px; }
+  
+  .form-wrapper {
+    position: relative; }
+    .form-wrapper i {
+      position: absolute;
+      bottom: 9px;
+      right: 0; }
+  
+  .form-control {
+    border: 1px solid #333;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    display: block;
+    width: 100%;
+    height: 30px;
+    padding: 0;
+    margin-bottom: 25px; }
+    .form-control::-webkit-input-placeholder {
+      font-size: 13px;
+      color: #333;
+      font-family: "Prompt",sans-serif; }
+    .form-control::-moz-placeholder {
+      font-size: 13px;
+      color: #333;
+      font-family: "Prompt",sans-serif; }
+    .form-control:-ms-input-placeholder {
+      font-size: 13px;
+      color: #333;
+      font-family: "Prompt",sans-serif; }
+    .form-control:-moz-placeholder {
+      font-size: 13px;
+      color: #333;
+      font-family: "Prompt",sans-serif; }
+  
+  select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    padding-left: 20px; 
+  }
+    select option[value=""][disabled] {
+      display: none; 
+    }
+  
+  button {
+    border: none;
+    width: 164px;
+    height: 51px;
+    margin: auto;
+    margin-top: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: #333;
+    font-size: 15px;
+    color: #fff;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s; }
+    button i {
+      margin-left: 10px;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0); }
+    button:hover i, button:focus i, button:active i {
+      -webkit-animation-name: hvr-icon-wobble-horizontal;
+      animation-name: hvr-icon-wobble-horizontal;
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-timing-function: ease-in-out;
+      animation-timing-function: ease-in-out;
+      -webkit-animation-iteration-count: 1;
+      animation-iteration-count: 1; }
+  
+    button {
+      margin-top: 60px; } 
+  
+  .clickhere{
+    margin-top: 2%;
+    text-align: center !important;
+  }
+  
+  .LogOutBtn{
+    margin-top: 10px;
+    background-color: #db1226;
+  }
+
+  

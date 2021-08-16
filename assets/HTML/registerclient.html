@@ -5,16 +5,18 @@
     <title>Registration</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="http://localhost/GymWebsite/">
+    <!-- MATERIAL DESIGN ICONIC FONT -->
+    <link rel="stylesheet" href="assets/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap" rel="stylesheet">
+    <script src="https://use.fontawesome.com/8e773d205c.js"></script>
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="assets/CSS/register.css">
 
 </head>
 
 <body>
     <div class="wrapper">
-        <div class="inner">
-            <div class="image-holder">
-                <img src="assets/img/registerLogin/reg3.jpg" alt="">
-            </div>
-            <form action="registerNewMember" method="post">
+            <form action="register" method="post">
 
                 <h3>Register Here</h3>
 
@@ -24,40 +26,38 @@
                 </div>
 
                 <div class="form-wrapper">
-
                     <select name="gender" id="" class="form-control">
                         <option value="" disabled selected>Gender</option>
                         <option value="male" name="gender">Male</option>
                         <option value="female" name="gender">Female</option>
                     </select>
-
-                    <input type="hidden" name="type" value="client">
-
-                    <div class="form-wrapper">
-                        <input type="date" placeholder="Date of birth" name="birthdate" class="form-control">
-                        <i class="fa fa-calendar" aria-hidden="true"></i>
-                    </div>
-
-                    <div class="form-wrapper">
-                        <input type="text" placeholder="Phone" name="phone" class="form-control">
-                        <i class="fa fa-mobile" aria-hidden="true"></i>
-
-                    </div>
-
-                    <div class="form-wrapper">
-                        <input type="text" placeholder="Email Address" name="email" class="form-control">
-                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
-
-                    </div>
-
-
-                    <div class="form-wrapper container">
-                        <button type="submit" name="registerNewMember" value="Register">Register</button>
-                    </div>
+                    <i class="fa fa-arrow-down" aria-hidden="true"></i>
                 </div>
+
+                <input type="hidden" name="type" value="client">
+
+                <div class="form-wrapper">
+                    <input type="date" placeholder="Date of birth" name="birthdate" class="form-control">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                </div>
+
+                <div class="form-wrapper">
+                    <input type="text" placeholder="Phone" name="phone" class="form-control">
+                    <i class="fa fa-mobile" aria-hidden="true"></i>
+
+                </div>
+
+                <div class="form-wrapper">
+                    <input type="text" placeholder="Email Address" name="email" class="form-control">
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+
+                </div>
+                <button type="submit" name="registerNewMember" value="Register">Next</button>
+
             </form>
-        </div>
-    </div>
+   </div>
+    
+
 </body>
 
 </html>
