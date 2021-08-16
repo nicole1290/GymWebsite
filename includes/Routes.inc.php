@@ -49,5 +49,7 @@ Route::set('Login',function(){
 });
 
 Route::set('LoginSubmit',function(){
+
     Controller::openController('Accounts');
+
 });
