@@ -1,38 +1,56 @@
+<!DOCTYPE html>
 <html>
+	<head>
+		<meta charset="utf-8">
+		<title>Login</title>
+		<base href="http://localhost/GymWebsite/">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap" rel="stylesheet">
+		<script src="https://use.fontawesome.com/8e773d205c.js"></script>
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="assets/CSS/register.css">
+				
+	</head>
 
-<head>
-    <meta charset="utf-8">
-    <title>Registration</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="http://localhost/GymWebsite/">
+	<body">
 
-</head>
+		<div class="wrapper ">
+			<div class="inner">
+				<div class="image-holder">
+					<img src="assets/images/addNewCoach.jpg" alt="">
+				</div>
+				<form action="login" method="post">
+                    <div class="login">
+					<h3>Welcome to Power Lab</h3>
+                    <h2>Login Here</h2>
+					
+					<div class="form-wrapper">
+						<input type="text" placeholder="Email Address" class="form-control" name="email">
+						<i class="zmdi zmdi-email"></i>
+					</div>
+				
+					<div class="form-wrapper container">
+						<input type="password" id="password" placeholder="Password" class="form-control" name="password" required>
+						<i class="fa fa-eye" aria-hidden="true" id="togglePassword"></i>
+					</div>
 
-<body>
-    <div class="wrapper">
-        <div class="inner">
-            <div class="image-holder">
-                <img src="assets/img/registerLogin/reg3.jpg" alt="">
-            </div>
-            <form action="LoginSubmit" method="GET">
+					<!--  ••••Eza bhotta fo2 ma btozbat ba2a•••• -->
+					<script src="assets/JS/passwordVisibility.js"></script>
+					
+					<button style="text-align: center;align-items: center; margin-left: 45%;" type="submit" name="submit" value="login">Login
+						<i class="zmdi zmdi-arrow-right"></i>
+					</button>
 
-                <h3>Login</h3>
+					<div class="form-wrapper clickhere">
+					<p>Don't have an account?<a href="register">Click here</a></p>
+					</div>
 
-                    <div class="form-wrapper">
-                        <input type="text" placeholder="Email Address" name="mail" class="form-control">
-                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
                     </div>
-                    <div class="form-wrapper">
-                        <input type="password" name="password" placeholder="Password"/>
-                    </div>
-
-                    <div class="form-wrapper container">
-                        <button type="submit" name="login" value="Login">Login</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</body>
-
+				</form>
+			</div>
+		</div>
+		
+	</body>
 </html>
