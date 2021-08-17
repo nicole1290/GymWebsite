@@ -33,7 +33,9 @@
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 }
-
+.height-adjust{
+  max-height: 50px !important;
+}
 *,
 *::before,
 *::after {
@@ -2682,7 +2684,7 @@ progress {
   padding: 0.5rem 0.75rem;
   font-size: 0.875rem;
   font-weight: 400;
-  line-height: 1.4rem;
+  line-height: 1.6rem;
   color: #495057;
   background-color: #fff;
   background-clip: padding-box;
@@ -2877,12 +2879,7 @@ textarea.form-control-lg {
   line-height: 1.4rem;
   color: #495057;
   background-color: #fff;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 0.75rem center;
-  background-size: 16px 12px;
-  border: 1px solid #d2d6da;
-  border-radius: 0.5rem;
+
   transition: box-shadow 0.15s ease, border-color 0.15s ease;
   appearance: none;
 }
