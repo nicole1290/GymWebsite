@@ -5,7 +5,6 @@ Route::set("index.php",function(){
     
 });
 
-
 Route::set('newMember',function(){
 
     Controller::CreateView('newMember');
@@ -42,9 +41,10 @@ Route::set('PasswordSubmit',function(){
 
 });
 
-Route::set('Login',function(){
+//change Login to login to let the page appear on my browser 
+Route::set('login',function(){
 
-    Controller::CreateView('Login');
+    Controller::CreateView('login');
 
 });
 
@@ -52,4 +52,10 @@ Route::set('LoginSubmit',function(){
 
     Controller::openController('Accounts');
 
+});
+
+Route::set('dashboard',function(){
+
+    Controller::CreateView('dashboard');
+  
 });

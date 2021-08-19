@@ -91,9 +91,10 @@
     }
 
     form{
-      margin: 10%;
+      margin: 0%;
      align-items: center;
     }
+    
   img {
     max-width: 100%; }
   
@@ -129,7 +130,7 @@
     border-left: none;
     display: block;
     width: 100%;
-    height: 30px;
+    height: 50px !important;
     padding: 0;
     margin-bottom: 25px; }
     .form-control::-webkit-input-placeholder {
@@ -159,41 +160,6 @@
       display: none; 
     }
   
-  button {
-    border: none;
-    width: 164px;
-    height: 51px;
-    margin: auto;
-    margin-top: 40px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    background: #333;
-    font-size: 15px;
-    color: #fff;
-    vertical-align: middle;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s; }
-    button i {
-      margin-left: 10px;
-      -webkit-transform: translateZ(0);
-      transform: translateZ(0); }
-    button:hover i, button:focus i, button:active i {
-      -webkit-animation-name: hvr-icon-wobble-horizontal;
-      animation-name: hvr-icon-wobble-horizontal;
-      -webkit-animation-duration: 1s;
-      animation-duration: 1s;
-      -webkit-animation-timing-function: ease-in-out;
-      animation-timing-function: ease-in-out;
-      -webkit-animation-iteration-count: 1;
-      animation-iteration-count: 1; }
-  
-    button {
-      margin-top: 60px; } 
   
   .clickhere{
     margin-top: 2%;
