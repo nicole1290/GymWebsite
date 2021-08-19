@@ -49,11 +49,13 @@ Route::set('login',function(){
 });
 
 Route::set('LoginSubmit',function(){
+
     Controller::openController('Accounts');
+
 });
 
 Route::set('dashboard',function(){
 
     Controller::CreateView('dashboard');
-
+  
 });
