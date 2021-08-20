@@ -140,8 +140,11 @@ class Accounts extends Controller{
 
 }
 
+//Case where the client is trying to login
 if(isset($_GET['mail'])&&isset($_GET['password'])){
     
     Accounts::logIn();
         
 }
+
+//Case where the admin is adding a new membership

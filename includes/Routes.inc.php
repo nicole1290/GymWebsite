@@ -54,6 +54,12 @@ Route::set('LoginSubmit',function(){
 
 });
 
+Route::set('registrationMembership',function(){
+
+    Controller::CreateView('newMembership');
+
+});
+
 Route::set('dashboard',function(){
 
     Controller::CreateView('dashboard');
