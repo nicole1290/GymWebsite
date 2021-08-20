@@ -45,8 +45,8 @@ class Accounts extends Controller{
 
         if(Account::loginAuthentication($_GET['mail'],$_GET['password'])){
             
-            setcookie('login',true,time() - 3600,"/");
-            setcookie('email',$_GET['mail'],time() - 3600 ,"/");
+            setcookie('login',true,time() + (3600*24*365),"/");
+            setcookie('email',$_GET['mail'],time() + (3600*24*365) ,"/");
 
             //TODO: Add Redirection
             Controller::redirect('index.php');

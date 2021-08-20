@@ -2,7 +2,7 @@
 
 //Routing for the defauly Page
 Route::set("index.php",function(){
-    
+
 });
 
 Route::set('newMember',function(){
@@ -41,11 +41,10 @@ Route::set('PasswordSubmit',function(){
 
 });
 
-//change Login to login to let the page appear on my browser 
-Route::set('login',function(){
+Route::set('Login',function(){
 
     Controller::CreateView('login');
-
+    
 });
 
 Route::set('LoginSubmit',function(){
