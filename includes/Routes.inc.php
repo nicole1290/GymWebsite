@@ -53,9 +53,28 @@ Route::set('LoginSubmit',function(){
 
 });
 
-Route::set('registrationMembership',function(){
+Route::set('newMembership',function(){
 
     Controller::CreateView('newMembership');
+
+});
+
+Route::set('registrationMembership',function(){
+
+    Controller::openController('Membership');
+
+});
+
+Route::set('NewBundle',function(){
+
+    //TODO: Add Restriction for the access of the Page
+    Controller::CreateView('NewBundle');
+
+});
+
+Route::set('bundleController',function(){
+
+    Controller::openController('Bundle');
 
 });
 

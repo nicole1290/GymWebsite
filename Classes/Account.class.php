@@ -116,6 +116,23 @@ abstract class Account {
 
     }
 
+    public static function retrieveAccountID($email){
+
+        $pdo = DataBase::getConnection();
+
+        $statement = "SELECT `ID` FROM `user` WHERE `Mail`= ?";
+        $parameters = [$email];
+
+        $results = $pdo->query($statement,$parameters);
+
+        foreach($results as $result){
+
+            return $result['ID'];
+
+        }
+
+    }
+
     //Function to retrieve the account type of a given user ID
     public static function retrieveAccountType($AccountID){
 
