@@ -1,9 +1,9 @@
 <?php
 
-//include ('./assets/HTML/membership.html');
+include ('./assets/HTML/membership.html');
 
 ?>
-
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,4 +40,4 @@
 
 </body>
 
-</html>
+</html> -->
