@@ -1,10 +1,7 @@
 body{
     align-items: center;
     text-align: center;
-    background-image: url(../images/prodback.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    
 }
 .imageclass{
     margin-left: auto;
@@ -14,24 +11,24 @@ body{
 .uploadbtn{
     margin-top:10px;
     color: white;
-    background-color: rgb(68, 68, 68);
+    background-color: rgb(15, 15, 15);
     width: 100px;
     height: fit-content;
-    border: 2px solid blanchedalmond;
+    border: 2px solid white;
     font-size: 20px;
 }
 input[type=text]{
-    border: 3px solid rgba(44, 44, 44, 0.609);
-border-radius: 5%;
+border-radius: 2%;
+width:100%;
 }
 
 input[type=number]{
-    border: 3px solid rgba(44, 44, 44, 0.609);
-border-radius: 5%;
+border-radius: 2%;
+width:100%;
 }
 textarea{
-    border: 3px solid rgba(44, 44, 44, 0.609);
     border-radius: 2%;
+	border:2px solid black;
     
 }
 .uk-container{
@@ -43,7 +40,7 @@ textarea{
     width: fit-content;
    padding-left: 5%;
    padding-right: 5%;
-    background-color: rgba(255, 255, 255, 0.664);
+    background-color: white;
 }
 #media-uploader1 .dz-message {
 	font-size: 10px;

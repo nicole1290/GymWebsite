@@ -83,3 +83,11 @@ Route::set('dashboard',function(){
     Controller::CreateView('dashboard');
   
 });
+
+
+Route::set('addproduct',function(){
+
+    Controller::CreateView('addproduct');
+  
+});
+
