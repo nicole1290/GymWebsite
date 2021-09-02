@@ -17,18 +17,15 @@ body{
     border: 2px solid white;
     font-size: 20px;
 }
-input[type=text]{
-border-radius: 2%;
+.borderbott{
 width:100%;
+border-top: transparent;
+border-left: transparent;
+border-right: transparent;
 }
 
-input[type=number]{
-border-radius: 2%;
-width:100%;
-}
 textarea{
-    border-radius: 1%;
-	border:1.5px solid rgb(46, 46, 46);
+	border:1px solid rgb(141, 141, 141);
 	width: 100%	;
     
 }
